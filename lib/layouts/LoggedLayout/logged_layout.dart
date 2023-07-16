@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../pages/DashboardPage/dashboard_page.dart';
+import 'package:semplice_moda_mobile/pages/StockPage/stock_page.dart';
+import 'package:semplice_moda_mobile/pages/DashboardPage/dashboard_page.dart';
 
 class LoggedLayout extends StatefulWidget {
   const LoggedLayout({Key? key, required this.child}) : super(key: key);
@@ -42,6 +43,11 @@ class _LoggedLayoutState extends State<LoggedLayout> {
               leading: const Icon(Icons.insert_chart_outlined),
               title: const Text('Dashboard'),
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage())),
+            ),
+            ListTile(
+              leading: const Icon(Icons.inventory_2_outlined),
+              title: const Text('Stock'),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const StockPage())),
             ),
           ],
         ),
