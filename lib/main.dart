@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semplice_moda_mobile/pages/DashboardPage/dashboard_page.dart';
 
 import 'package:semplice_moda_mobile/styles/color_schemes.g.dart';
 
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      home: LoginPage(),
+      debugShowCheckedModeBanner: true,
+      initialRoute: LoginPage.id,
+      routes: {
+        LoginPage.id: (context) => LoginPage(),
+        DashboardPage.id: (context) => const DashboardPage()
+      },
     );
   }
 }

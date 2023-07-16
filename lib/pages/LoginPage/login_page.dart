@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semplice_moda_mobile/pages/DashboardPage/dashboard_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -10,15 +11,15 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color primaryColor = Theme.of(context).colorScheme.primaryContainer;
-    Color ss = Theme.of(context).colorScheme.secondaryContainer;
+    Color secondaryColor = Theme.of(context).colorScheme.secondaryContainer;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [primaryColor, ss],
-            stops: [0.1, 1],
+            colors: [primaryColor, secondaryColor],
+            stops: const [0.1, 1],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           )
@@ -44,9 +45,7 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 24.0),
             ElevatedButton(
-              onPressed: () {
-                // Ação de login
-              },
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage())),
               child: const Text('Login'),
             ),
           ],
