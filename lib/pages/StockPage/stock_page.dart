@@ -7,6 +7,7 @@ import 'package:semplice_moda_mobile/components/buttons/ActionButton/action_butt
 import 'package:semplice_moda_mobile/components/floatingActionButtons/ExpandableFAB/expandable_fab.dart';
 import 'package:semplice_moda_mobile/layouts/LoggedLayout/logged_layout.dart';
 import 'package:semplice_moda_mobile/pages/StockPage/StockListItems/stock_list_items.dart';
+import 'package:semplice_moda_mobile/pages/StockPage/functions/delete.dart';
 import 'package:semplice_moda_mobile/types/api/stock/stock_item.dart';
 
 class StockPage extends StatefulWidget {
@@ -51,38 +52,8 @@ class _StockPageState extends State<StockPage> {
   void toggleItemSelection(StockItem item) {
     setState(() {
       item.selected = !item.selected;
-      if (item.selected) {
-        selectedItems.add(item);
-      } else {
-        selectedItems.remove(item);
-      }
+      item.selected ? selectedItems.add(item) : selectedItems.remove(item);
     });
-  }
-
-  // void deleteSelectedItems() {
-  //   setState(() {
-  //     stockItems.removeWhere((item) => item.selected);
-  //     selectedItems.clear();
-  //   });
-  // }
-
-  static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
-
-  void _showAction(BuildContext context, int index) {
-    showDialog<void>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Text(_actionTitles[index]),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override
@@ -103,16 +74,12 @@ class _StockPageState extends State<StockPage> {
         distance: 80,
         children: [
           ActionButton(
-            onPressed: () => _showAction(context, 0),
-            icon: const Icon(Icons.format_size),
+            onPressed: () => deleteItemStockFunction(context, selectedItems),
+            icon: const Icon(Icons.delete_forever),
           ),
           ActionButton(
-            onPressed: () => _showAction(context, 1),
-            icon: const Icon(Icons.insert_photo),
-          ),
-          ActionButton(
-            onPressed: () => _showAction(context, 2),
-            icon: const Icon(Icons.videocam),
+            onPressed: () => {},
+            icon: const Icon(Icons.face),
           ),
         ],
       ),

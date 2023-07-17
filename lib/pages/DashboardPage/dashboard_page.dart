@@ -26,7 +26,7 @@ class DashboardPage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                'Página em Construção',
+                'Page under construction',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class DashboardPage extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'Desculpe-nos pelo incômodo. Esta página ainda está em construção.',
+                'Sorry for the inconvenience. This page is still under construction.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),

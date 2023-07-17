@@ -67,7 +67,7 @@ class StockListItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Tamanho: ${item.size}',
+                    'Size: ${item.size}',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 14,
