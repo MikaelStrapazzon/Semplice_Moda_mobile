@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:semplice_moda_mobile/pages/DashboardPage/dashboard_page.dart';
-import 'package:semplice_moda_mobile/pages/RegisterPage/register_page.dart';
+import 'package:semplice_moda_mobile/pages/LoginPage/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  RegisterPage({super.key});
 
-  static String id = '/LoginPage';
+  static String id = '/RegisterPage';
 
   final formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
@@ -37,17 +36,17 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const Image(
                     image: AssetImage('assets/logos/logo.png'),
-                    width: 120,
+                    width: 90,
                   ),
                   const Text(
-                    'Semplice Moda ERP',
+                    'Register Form',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 22,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     controller: nameController,
                     decoration: const InputDecoration(
@@ -78,6 +77,20 @@ class LoginPage extends StatelessWidget {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 16.0),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Confirm Password',
+                      errorStyle: TextStyle(color: Colors.red),
+                    ),
+                    validator: (value) {
+                      if (value == null || value != passwordController.text) {
+                        return 'Please enter the same password';
+                      }
+                      return null;
+                    },
+                  ),
                   const SizedBox(height: 24.0),
                   ElevatedButton(
                     style: ButtonStyle(
@@ -88,7 +101,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'Login',
+                      'Register',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -99,22 +112,15 @@ class LoginPage extends StatelessWidget {
 
                       http.post(
                           Uri.parse(
-                              'http://192.168.0.112/SemplicePDM/login.php'),
+                              'http://192.168.0.112/SemplicePDM/register.php'),
                           body: {
                             'name': nameController.text,
                             'password': passwordController.text
                           }).then((value) {
-                        if (value.body.isNotEmpty) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const DashboardPage()));
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  backgroundColor: Colors.red,
-                                  content: Text('Name or Password is wrong')));
-                        }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
                       });
                     },
                   ),
@@ -124,13 +130,13 @@ class LoginPage extends StatelessWidget {
           ),
           GestureDetector(
             child: const Text(
-              "Don't have an account? Click here to register.",
+              "Back to login",
               style: TextStyle(fontSize: 14),
               textAlign: TextAlign.center,
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()));
+                  MaterialPageRoute(builder: (context) => LoginPage()));
             },
           )
         ]),
