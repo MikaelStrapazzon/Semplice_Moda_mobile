@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'package:semplice_moda_mobile/pages/StockPage/stock_page.dart';
 import 'package:semplice_moda_mobile/pages/DashboardPage/dashboard_page.dart';
+import 'package:semplice_moda_mobile/pages/StockPage/stock_page.dart';
 
 class LoggedLayout extends StatefulWidget {
-  const LoggedLayout({Key? key, required this.child}) : super(key: key);
+  const LoggedLayout(
+      {Key? key,
+      required this.body,
+      required this.appBar,
+      this.floatingActionButton})
+      : super(key: key);
 
-  final Widget child;
+  final PreferredSizeWidget appBar;
+  final Widget body;
+  final Widget? floatingActionButton;
 
   @override
   State<StatefulWidget> createState() => _LoggedLayoutState();
@@ -16,15 +22,15 @@ class _LoggedLayoutState extends State<LoggedLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
+      appBar: widget.appBar,
+      body: widget.body,
+      floatingActionButton: widget.floatingActionButton,
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF6750A4)
-              ),
+              decoration: BoxDecoration(color: Color(0xFF6750A4)),
               child: Column(
                 children: [
                   Image(
@@ -42,12 +48,16 @@ class _LoggedLayoutState extends State<LoggedLayout> {
             ListTile(
               leading: const Icon(Icons.insert_chart_outlined),
               title: const Text('Dashboard'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage())),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DashboardPage())),
             ),
             ListTile(
               leading: const Icon(Icons.inventory_2_outlined),
               title: const Text('Stock'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const StockPage())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const StockPage())),
             ),
           ],
         ),
