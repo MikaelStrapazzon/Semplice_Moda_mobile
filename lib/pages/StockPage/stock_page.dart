@@ -7,6 +7,7 @@ import 'package:semplice_moda_mobile/components/buttons/ActionButton/action_butt
 import 'package:semplice_moda_mobile/components/floatingActionButtons/ExpandableFAB/expandable_fab.dart';
 import 'package:semplice_moda_mobile/layouts/LoggedLayout/logged_layout.dart';
 import 'package:semplice_moda_mobile/pages/StockPage/StockListItems/stock_list_items.dart';
+import 'package:semplice_moda_mobile/pages/StockPage/functions/add.dart';
 import 'package:semplice_moda_mobile/pages/StockPage/functions/delete.dart';
 import 'package:semplice_moda_mobile/types/api/stock/stock_item.dart';
 
@@ -78,8 +79,8 @@ class _StockPageState extends State<StockPage> {
             icon: const Icon(Icons.delete_forever),
           ),
           ActionButton(
-            onPressed: () => {},
-            icon: const Icon(Icons.face),
+            onPressed: () => addItemStockFunction(context),
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
